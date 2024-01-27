@@ -1,0 +1,36 @@
+/* Add your global styles here */
+.text-center {
+    text-align: center;
+  }
+  
+//* Add your global styles here */
+
+/* Style for the container */
+.col-12 {
+    margin-top: 100px;
+    
+   
+  }
+  
+  /* Style for the heading */
+  h3 {
+    font-size: 1.5em;
+    margin-bottom: 20px;
+  }
+  
+  /* Style for the wrapper around the table */
+  .custom-datatable-wrapper {
+    margin-top: 20px;
+  }
+  
+  /* Style for the table */
+  #technicianList {
+    width: 100%;
+    border-collapse: collapse; /* Optional: Remove spacing between table cells */
+  }
+  
+  /* Optional: Add hover effect on table rows */
+  #technicianList tbody tr:hover {
+    background-color: #f5f5f5;
+  }
+  

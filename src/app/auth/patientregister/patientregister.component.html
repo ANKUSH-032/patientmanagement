@@ -1,0 +1,251 @@
+<!-- Your Angular component's HTML file -->
+<div class="login-container">
+<div class="outer">
+  <div class="panel">
+    <div class="panel-heading">
+      <h3 class="pt-3 font-weight-bold text-dark">Sign Up</h3>
+    </div>
+
+    <div class="panel-body p-3">
+      <form [formGroup]="signupForm" class="horizontal-form" (ngSubmit)="onSignup()">
+
+        <!-- First Name -->
+        <div class="form-group">
+          <div class="input-group">
+            <span class="input-group-text">
+              <i class="fa fa-user"></i>
+            </span>
+            <input
+              type="text"
+              class="form-control"
+              formControlName="FirstName"
+              placeholder="First Name"
+            />
+          </div>
+          <small
+            class="text-danger"
+            *ngIf="
+              signupForm.controls['FirstName'].dirty &&
+              signupForm.controls['FirstName'].invalid
+            "
+          >*First Name is required</small>
+        </div>
+
+        <!-- Last Name -->
+        <div class="form-group">
+          <div class="input-group">
+            <span class="input-group-text">
+              <i class="fa fa-user"></i>
+            </span>
+            <input
+              type="text"
+              class="form-control"
+              formControlName="LastName"
+              placeholder="Last Name"
+            />
+          </div>
+          <small
+            class="text-danger"
+            *ngIf="
+              signupForm.controls['LastName'].dirty &&
+              signupForm.controls['LastName'].invalid
+            "
+          >*Last Name is required</small>
+        </div>
+
+        <!-- Email -->
+        <div class="form-group">
+          <div class="input-group">
+            <span class="input-group-text">
+              <i class="fa fa-envelope"></i>
+            </span>
+            <input
+              type="text"
+              class="form-control"
+              formControlName="Email"
+              placeholder="Email"
+            />
+          </div>
+          <small
+            class="text-danger"
+            *ngIf="
+              signupForm.controls['Email'].dirty &&
+              signupForm.controls['Email'].invalid
+            "
+          >*Email is required</small>
+        </div>
+
+        <!-- Password -->
+        <div class="form-group">
+          <div class="input-group">
+            <span class="input-group-text">
+              <i class="fa fa-lock"></i>
+            </span>
+            <input
+              [type]="type"
+              class="form-control"
+              formControlName="Password"
+              placeholder="Password"
+            />
+            <span
+              (click)="hideshowpass()"
+              class="fa {{ eyeIcon }} eye-icon"
+            ></span>
+          </div>
+          <small
+            class="text-danger"
+            *ngIf="
+              signupForm.controls['Password'].dirty &&
+              signupForm.controls['Password'].invalid
+            "
+          >*Password is required</small>
+        </div>
+
+        <!-- Contact No -->
+        <div class="form-group">
+          <div class="input-group">
+            <span class="input-group-text">
+              <i class="fa fa-phone"></i>
+            </span>
+            <input
+              type="text"
+              class="form-control"
+              formControlName="ContactNo"
+              placeholder="Contact No"
+            />
+          </div>
+          <small
+            class="text-danger"
+            *ngIf="
+              signupForm.controls['ContactNo'].dirty &&
+              signupForm.controls['ContactNo'].invalid
+            "
+          >*Contact No is required</small>
+        </div>
+
+        <!-- Hospital Name -->
+        <div class="form-group">
+          <div class="input-group">
+            <span class="input-group-text">
+              <i class="fa fa-building"></i>
+            </span>
+            <input
+              type="text"
+              class="form-control"
+              formControlName="HospitalName"
+              placeholder="Hospital Name"
+            />
+          </div>
+          <small
+            class="text-danger"
+            *ngIf="
+              signupForm.controls['HospitalName'].dirty &&
+              signupForm.controls['HospitalName'].invalid
+            "
+          >*Hospital Name is required</small>
+        </div>
+
+        <!-- Address -->
+        <div class="form-group">
+          <div class="input-group">
+            <span class="input-group-text">
+              <i class="fa fa-map-marker"></i>
+            </span>
+            <input
+              type="text"
+              class="form-control"
+              formControlName="Address"
+              placeholder="Address"
+            />
+          </div>
+          <small
+            class="text-danger"
+            *ngIf="
+              signupForm.controls['Address'].dirty &&
+              signupForm.controls['Address'].invalid
+            "
+          >*Address is required</small>
+        </div>
+
+        <!-- Zip Code -->
+        <div class="form-group">
+          <div class="input-group">
+            <span class="input-group-text">
+              <i class="fa fa-map-pin"></i>
+            </span>
+            <input
+              type="text"
+              class="form-control"
+              formControlName="ZipCode"
+              placeholder="Zip Code"
+            />
+          </div>
+          <small
+            class="text-danger"
+            *ngIf="
+              signupForm.controls['ZipCode'].dirty &&
+              signupForm.controls['ZipCode'].invalid
+            "
+          >*Zip Code is required</small>
+        </div>
+
+        <!-- Dropdown Form Element for Role -->
+        <div class="form-group dropdown-form-group">
+          <div class="input-group">
+            <span class="input-group-text">
+              <i class="fa fa-user"></i>
+            </span>
+            <select class="form-control" formControlName="RoleID">
+              <option value="" disabled selected>Select Role</option>
+              <option *ngFor="let role of roleOptions" [value]="role.value">{{ role.label }}</option>
+            </select>
+          </div>
+          <small
+            class="text-danger"
+            *ngIf="
+              signupForm.controls['RoleID'].dirty &&
+              signupForm.controls['RoleID'].invalid
+            "
+          >*Role is required</small>
+        </div>
+
+        <!-- Dropdown Form Element for Gender -->
+        <div class="form-group dropdown-form-group">
+          <div class="input-group">
+            <span class="input-group-text">
+              <i class="fa fa-venus-mars"></i>
+            </span>
+            <select class="form-control" formControlName="Gender">
+              <option value="" disabled selected>Select Gender</option>
+              <option *ngFor="let gender of genderOptions" [value]="gender.value">{{ gender.label }}</option>
+            </select>
+          </div>
+          <small
+            class="text-danger"
+            *ngIf="
+              signupForm.controls['Gender'].dirty &&
+              signupForm.controls['Gender'].invalid
+            "
+          >*Gender is required</small>
+        </div>
+
+        <!-- Forget Password link -->
+        <div class="form-inline fr mt-4">
+          <a id="forget" class="font-weight-bold">Forget Password?</a>
+        </div>
+
+        <!-- Submit Button -->
+        <button type="submit" class="btn btn-primary btn-block mt-4 w-100">
+          Sign Up
+        </button>
+
+        <!-- Already have an account link -->
+        <div class="text-center pt-4 text-muted">
+          Already have an account? <a id="forget" routerLink="/login">Login</a>
+        </div>
+
+      </form>
+    </div>
+  </div>
+</div>
+</div>

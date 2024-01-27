@@ -1,0 +1,21 @@
+/* Styles for the footer */
+footer {
+    background-color: #bbb5b5; /* set the background color */
+    color: #fff; /* set the text color */
+    padding: 20px; /* add some padding */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  /* Styles for links within the footer */
+  footer a {
+    color: #fff; /* set the link color */
+    text-decoration: none; /* remove underlines from links */
+  }
+  .border{
+    max-width: auto;
+    margin: 1px auto;
+   
+  }
+  
