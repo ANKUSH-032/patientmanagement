@@ -36,11 +36,19 @@
             "styles": [
               "node_modules/ngx-toastr/toastr.css",
               "src/styles.scss", 
-              "node_modules/datatables.net-dt/css/jquery.dataTables.min.css"
+              "node_modules/datatables.net-buttons-dt/css/buttons.dataTables.css",
+              "node_modules/bootstrap/dist/css/bootstrap.min.css",
+              "node_modules/datatables.net-bs5/css/dataTables.bootstrap5.css",
+              "node_modules/datatables.net-buttons-bs5/css/buttons.bootstrap5.css"
             ],
             "scripts": [
               "node_modules/jquery/dist/jquery.min.js",
-              "node_modules/datatables.net/js/jquery.dataTables.min.js"
+              "node_modules/bootstrap/dist/js/bootstrap.bundle.min.js",
+              "node_modules/datatables.net/js/jquery.dataTables.js",
+              "node_modules/datatables.net-bs4/js/dataTables.bootstrap4.js",
+              "node_modules/datatables.net-buttons/js/dataTables.buttons.js",
+              "node_modules/datatables.net-buttons-bs5/js/buttons.bootstrap5.js",
+              "node_modules/jszip/dist/jszip.js"
             ]
           },
           "configurations": {

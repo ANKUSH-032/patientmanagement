@@ -71,8 +71,15 @@ body {
   .text-muted {
     color: #888;
   }
+  // .login-container {
+  //   margin-top: 100px; /* Adjust the top margin based on your design */
+  //   text-align: center;
+  // }
   .login-container {
-    margin-top: 100px; /* Adjust the top margin based on your design */
-    text-align: center;
+    background: url('../../../assets/doctor-background.jpg') center center fixed;
+    background-size: cover;
+    height: 100vh; /* Adjust as needed */
+    display: flex;
+    align-items: center;
+    justify-content: center;
   }
-  

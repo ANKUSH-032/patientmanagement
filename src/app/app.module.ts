@@ -16,6 +16,7 @@ import { HeaderComponent } from './auth/header/header.component';
 import { FooterComponent } from './auth/footer/footer.component';
 import { AuthguardService } from './services/authguard.service';
 import { AuthService } from './services/auth.service';
+import { NotfoundComponent } from './auth/NotFund/notfound/notfound.component';
 //import { DataTablesModule } from 'angular-datatables';
 @NgModule({
   declarations: [
@@ -24,7 +25,8 @@ import { AuthService } from './services/auth.service';
     PatientregisterComponent,
     PatientlistComponent,
     HeaderComponent,
-    FooterComponent
+    FooterComponent,
+    NotfoundComponent
   ],
   imports: [
     BrowserModule,
