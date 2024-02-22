@@ -17,6 +17,14 @@ import { FooterComponent } from './auth/footer/footer.component';
 import { AuthguardService } from './services/authguard.service';
 import { AuthService } from './services/auth.service';
 import { NotfoundComponent } from './auth/NotFund/notfound/notfound.component';
+import { PatientGetComponent } from './auth/patient-get/patient-get.component';
+import { CdkTableModule } from '@angular/cdk/table';
+import { AdminRegisterComponent } from './auth/admin/admin-register/admin-register.component';
+import { AdminListComponent } from './auth/admin/admin-list/admin-list.component';
+import { AdminEditComponent } from './auth/admin/admin-edit/admin-edit.component';
+import { AdminGetComponent } from './auth/admin/admin-get/admin-get.component';
+import { DoctorListComponent } from './auth/doctor/doctor-list/doctor-list.component';
+
 //import { DataTablesModule } from 'angular-datatables';
 @NgModule({
   declarations: [
@@ -26,7 +34,13 @@ import { NotfoundComponent } from './auth/NotFund/notfound/notfound.component';
     PatientlistComponent,
     HeaderComponent,
     FooterComponent,
-    NotfoundComponent
+    NotfoundComponent,
+    PatientGetComponent,
+    AdminRegisterComponent,
+    AdminListComponent,
+    AdminEditComponent,
+    AdminGetComponent,
+    DoctorListComponent
   ],
   imports: [
     BrowserModule,
@@ -37,6 +51,7 @@ import { NotfoundComponent } from './auth/NotFund/notfound/notfound.component';
     HttpClientModule,
     BrowserAnimationsModule,
     DataTablesModule,
+    CdkTableModule,
     ToastrModule.forRoot(
       {
         timeOut: 4000,

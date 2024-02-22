@@ -1,0 +1,63 @@
+<div class="border">
+
+    <table cdk-table [dataSource]="userDetails">
+
+
+        <ng-container cdkColumnDef="firstName">
+            <th cdk-header-cell *cdkHeaderCellDef> First Name</th>
+            <td cdk-cell *cdkCellDef="let row"> {{row.firstName}} </td>
+        </ng-container>
+
+
+        <ng-container cdkColumnDef="lastName">
+            <th cdk-header-cell *cdkHeaderCellDef> Last Name </th>
+            <td cdk-cell *cdkCellDef="let row"> {{row.lastName}} </td>
+        </ng-container>
+
+
+        <ng-container cdkColumnDef="gender">
+            <th cdk-header-cell *cdkHeaderCellDef> Gender </th>
+            <td cdk-cell *cdkCellDef="let row"> {{row.gender}} </td>
+        </ng-container>
+
+        <ng-container cdkColumnDef="email">
+            <th cdk-header-cell *cdkHeaderCellDef> Email </th>
+            <td cdk-cell *cdkCellDef="let row"> {{row.email}} </td>
+        </ng-container>
+
+        <ng-container cdkColumnDef="contactNo">
+            <th cdk-header-cell *cdkHeaderCellDef> Phone Number </th>
+            <td cdk-cell *cdkCellDef="let row"> {{row.contactNo}} </td>
+        </ng-container>
+        <ng-container cdkColumnDef="roleName">
+            <th cdk-header-cell *cdkHeaderCellDef> Role Name </th>
+            <td cdk-cell *cdkCellDef="let row"> {{row.roleName}} </td>
+        </ng-container>
+        <ng-container cdkColumnDef="zipCode">
+            <th cdk-header-cell *cdkHeaderCellDef>Zip Code </th>
+            <td cdk-cell *cdkCellDef="let row"> {{row.zipCode}} </td>
+        </ng-container>
+        <ng-container cdkColumnDef="address">
+            <th cdk-header-cell *cdkHeaderCellDef> Address </th>
+            <td cdk-cell *cdkCellDef="let row"> {{row.address}} </td>
+        </ng-container>
+        <ng-container cdkColumnDef="hospitalName">
+            <th cdk-header-cell *cdkHeaderCellDef> Hospital Name </th>
+            <td cdk-cell *cdkCellDef="let row"> {{row.hospitalName}} </td>
+        </ng-container>
+
+        <ng-container cdkColumnDef="action">
+            <th cdk-header-cell *cdkHeaderCellDef> Action </th>
+            <td cdk-cell *cdkCellDef="let row">
+                <button type="reset" class="btn btn-primary mr-2" routerLink="/list-patient">Back</button>
+            </td>
+        </ng-container>
+
+        <tr cdk-header-row
+            *cdkHeaderRowDef="['firstName','lastName','gender','email','contactNo','roleName','zipCode','address','hospitalName','action']">
+        </tr>
+        <tr cdk-row
+            *cdkRowDef="let row; columns: ['firstName','lastName','gender','email','contactNo','roleName','zipCode','address','hospitalName','action']">
+        </tr>
+    </table>
+</div>

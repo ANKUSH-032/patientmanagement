@@ -1,21 +1,18 @@
 import { Component, OnInit } from '@angular/core';
 import { ToastrService } from 'ngx-toastr';
 import { Subject } from 'rxjs';
+import { patientList } from 'src/app/helper/model/patientList';
 import { AuthService } from 'src/app/services/auth.service';
 import { CommonService } from 'src/app/services/common.service';
-import { environment } from 'src/environments/environment';
-import { patientList } from '../../helper/model/patientList';
-
 
 @Component({
-  selector: 'app-patientlist',
-  templateUrl: './patientlist.component.html',
-  styleUrls: ['./patientlist.component.scss']
+  selector: 'app-admin-list',
+  templateUrl: './admin-list.component.html',
+  styleUrls: ['./admin-list.component.scss']
 })
-export class PatientlistComponent implements OnInit {
- 
-  
-  dtOptions: DataTables.Settings = {};
+export class AdminListComponent implements OnInit {
+
+ dtOptions: DataTables.Settings = {};
   dtTrigger: Subject<any> = new Subject<any>();
   patientList: any = [];
   patinet: patientList = {
@@ -81,7 +78,7 @@ export class PatientlistComponent implements OnInit {
     };
   
 
-  this.authService.postReq('Patient/list',apiParams).subscribe(
+  this.authService.postReq('User/list',apiParams).subscribe(
     (data) => {
       this.patientList = data['data'];
       this.dtTrigger.next(); // Trigger DataTable update after data is loaded
@@ -158,5 +155,3 @@ export class PatientlistComponent implements OnInit {
 
 
 }
-
-

@@ -13,7 +13,7 @@ export class AuthService {
   
   login(loginObj: any) {
 
-    return this.http.post(environment.api_url + "Auth/login", loginObj, {})
+    return this.http.post(baseURL + "Auth/login", loginObj, {})
   }
 
   postReq(url: any,data: any): Observable<any> {
@@ -43,6 +43,12 @@ export class AuthService {
       return response;
     }));
   }
+
+  get(url: any,id: string) {
+    return this.http.get(baseURL+ url + id)
+  }
+
+
   private isAuthenticated: boolean = false;
 
   // Setter to update authentication state
