@@ -27,12 +27,13 @@ ngOnInit(): void {
     this.userId = data['id']; // Assuming your parameter name is 'UserId'
     console.log('ankush',data);
     this.authService.get('User/get', `?UserId=${this.userId}`).subscribe((data) => {
-      this.userDetails = [data];
+      this.userDetails = data;
       this.toastr.success('User Get Successfully');
       console.log(this.userDetails);
     });
   });
 }
+
 
 ngOnDestroy(): void {
   this.routeSubscription.unsubscribe();

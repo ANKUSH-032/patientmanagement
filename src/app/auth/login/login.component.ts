@@ -68,7 +68,7 @@ export class LoginComponent implements OnInit {
             localStorage.setItem('token', res.userdetails.token);
             this.storageService.set('user', res.data);
             this.toastr.success(res.message || 'Login successful'); 
-            this.route.navigateByUrl('/list-patient');
+            this.route.navigateByUrl('/list-admin');
           } else  {
            
             this.toastr.error(res.message || 'Login unsuccessful'); 

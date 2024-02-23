@@ -1,13 +1,12 @@
 <div class="border">
 
-    <table cdk-table [dataSource]="userDetails.data">
+    <table cdk-table [dataSource]="doctrDetails.data">
 
 
         <ng-container cdkColumnDef="firstName">
             <th cdk-header-cell *cdkHeaderCellDef> First Name</th>
-            <td cdk-cell *cdkCellDef="let row"> {{row.firstName}} </td>
+            <td cdk-cell *cdkCellDef="let row"> {{ row.firstName }} </td>
         </ng-container>
-
 
         <ng-container cdkColumnDef="lastName">
             <th cdk-header-cell *cdkHeaderCellDef> Last Name </th>
@@ -49,7 +48,7 @@
         <ng-container cdkColumnDef="action">
             <th cdk-header-cell *cdkHeaderCellDef> Action </th>
             <td cdk-cell *cdkCellDef="let row">
-                <button type="reset" class="btn btn-primary mr-2" routerLink="/list-patients">Back</button>
+                <button type="reset" class="btn btn-primary mr-2" routerLink="/list-doctor">Back</button>
             </td>
         </ng-container>
 

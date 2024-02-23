@@ -1,6 +1,6 @@
 <div class="border">
 
-    <table cdk-table [dataSource]="userDetails">
+    <table cdk-table [dataSource]="userDetails.data">
 
 
         <ng-container cdkColumnDef="firstName">
@@ -49,7 +49,7 @@
         <ng-container cdkColumnDef="action">
             <th cdk-header-cell *cdkHeaderCellDef> Action </th>
             <td cdk-cell *cdkCellDef="let row">
-                <button type="reset" class="btn btn-primary mr-2" routerLink="/list-patient">Back</button>
+                <button type="reset" class="btn btn-primary mr-2" routerLink="/list-admin">Back</button>
             </td>
         </ng-container>
 

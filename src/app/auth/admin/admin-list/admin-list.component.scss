@@ -1,0 +1,45 @@
+/* Responsive Table CSS */
+.table-responsive {
+    overflow-x: auto;
+  }
+  
+  /* Responsive Breakpoints */
+  @media (max-width: 576px) {
+    .table-responsive {
+      overflow-x: auto;
+    }
+  }
+  
+  /* Optional: Styling for the table */
+  .table-bordered {
+    border: 1px solid #dee2e6;
+  }
+  
+  .table-striped tbody tr:nth-of-type(odd) {
+    background-color: rgba(0, 0, 0, 0.05);
+  }
+  
+  .table th,
+  .table td {
+    padding: 0.75rem;
+    vertical-align: top;
+    border-top: 1px solid #dee2e6;
+  }
+  
+  /* Center align text in table cells */
+  .text-center {
+    text-align: center;
+  }
+  
+  /* User Action Buttons */
+  .btn-group .btn {
+    padding: 0.5rem 1rem;
+  }
+  
+  /* Adjust margin for smaller screens */
+  @media (max-width: 576px) {
+    .btn-group .btn {
+      margin-bottom: 5px;
+    }
+  }
+  

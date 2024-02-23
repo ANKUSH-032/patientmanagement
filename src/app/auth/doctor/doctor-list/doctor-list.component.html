@@ -35,11 +35,14 @@
                     <button title="Edit User" class="btn btn-primary me-2" [routerLink]="['/edit-user', list.id]">
                       <span class="bi bi-pencil-square"></span>
                     </button>
-                    <button class="btn btn-danger me-2" title="Delete User" [routerLink]="['/delete-user', list.id]">
+                    <!-- <button class="btn btn-danger me-2" title="Delete User" [routerLink]="['/delete-user', list.id]">
                       <span class="bi bi-trash"></span>
-                    </button>
-                    <button class="btn btn-secondary" title="View User" [routerLink]="['/get-user', list.userId]">
-                      <span class="bi bi-eye"></span>
+                    </button> -->
+                    <button class="btn btn-danger me-2" title="Delete User" (click)="deletedoctor(list.doctorId)">
+                      <span class="bi bi-trash"></span>
+                  </button>
+                    <button class="btn btn-secondary" title="View User" [routerLink]="['/get-doctor', list.doctorId]">
+                      <span class="bi bi-eye"></span> 
                     </button>
                   </div>
                 </td>

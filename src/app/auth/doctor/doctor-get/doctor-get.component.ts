@@ -5,12 +5,13 @@ import { AuthService } from 'src/app/services/auth.service';
 import { CommonService } from 'src/app/services/common.service';
 
 @Component({
-  selector: 'app-patient-get',
-  templateUrl: './patient-get.component.html',
-  styleUrls: ['./patient-get.component.scss']
+  selector: 'app-doctor-get',
+  templateUrl: './doctor-get.component.html',
+  styleUrls: ['./doctor-get.component.scss']
 })
-export class PatientGetComponent implements OnInit {
-  userDetails: any = [];
+export class DoctorGetComponent implements OnInit {
+
+  doctrDetails: any = [];
   userId: any;
   routeSubscription : any;
  displayedColumns: string[] = ['firstName', 'lastName','gender','email','contactNo','roleName','zipCode','address','hospitalName','action'];
@@ -25,10 +26,10 @@ ngOnInit(): void {
   this.routeSubscription = this.activeRoute.params.subscribe(data => {
     this.userId = data['id']; // Assuming your parameter name is 'UserId'
     console.log('ankush',data);
-    this.authService.get('Patient/get', `?patientId=${this.userId}`).subscribe((data) => {
-      this.userDetails = data;
-      this.toastr.success('User Get Successfully');
-      console.log(this.userDetails);
+    this.authService.get('Doctors/get', `?DoctorId=${this.userId}`).subscribe((data) => {
+      this.doctrDetails = data;
+      this.toastr.success('Doctor Get Successfully');
+      console.log(this.doctrDetails);
     });
   });
 }
@@ -36,4 +37,5 @@ ngOnInit(): void {
 ngOnDestroy(): void {
   this.routeSubscription.unsubscribe();
 }
+
 }

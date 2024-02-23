@@ -92,6 +92,16 @@ export class PatientlistComponent implements OnInit {
     }
   );
 }
+
+
+deletepatient(userid : any){
+ 
+  this.authService.delete('Patient/delete', `?patinetId=${userid}`).subscribe((data) => {
+    this.patientList = data;
+    this.toastr.success('User Delete Successfully');
+    
+  });
+}
   ngOnDestroy(): void {
     this.dtTrigger.unsubscribe();
   }

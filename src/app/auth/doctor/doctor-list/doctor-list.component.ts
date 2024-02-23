@@ -47,7 +47,7 @@ export class DoctorListComponent implements OnInit {
             next: 'Next',
             previous: 'Previous'
           },
-          search: 'Patient Name Search:',
+          search: 'Doctor Name Search:',
           lengthMenu: 'Show _MENU_ entries',
           info: 'Showing _START_ to _END_ of _TOTAL_ entries',
           infoEmpty: 'Showing 0 to 0 of 0 entries',
@@ -88,6 +88,15 @@ export class DoctorListComponent implements OnInit {
       // Handle error
     }
   );
+}
+
+deletedoctor(userid : any){
+ 
+  this.authService.delete('Doctors/delete', `?DoctorId=${userid}`).subscribe((data) => {
+    this.patientList = data;
+    this.toastr.success('Doctor Delete Successfully');
+    
+  });
 }
   ngOnDestroy(): void {
     this.dtTrigger.unsubscribe();

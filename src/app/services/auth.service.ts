@@ -48,6 +48,10 @@ export class AuthService {
     return this.http.get(baseURL+ url + id)
   }
 
+  delete(url: any,id: string) {
+    return this.http.delete(baseURL+ url + id)
+  }
+
 
   private isAuthenticated: boolean = false;
 

@@ -24,6 +24,7 @@ import { AdminListComponent } from './auth/admin/admin-list/admin-list.component
 import { AdminEditComponent } from './auth/admin/admin-edit/admin-edit.component';
 import { AdminGetComponent } from './auth/admin/admin-get/admin-get.component';
 import { DoctorListComponent } from './auth/doctor/doctor-list/doctor-list.component';
+import { DoctorGetComponent } from './auth/doctor/doctor-get/doctor-get.component';
 
 //import { DataTablesModule } from 'angular-datatables';
 @NgModule({
@@ -40,7 +41,8 @@ import { DoctorListComponent } from './auth/doctor/doctor-list/doctor-list.compo
     AdminListComponent,
     AdminEditComponent,
     AdminGetComponent,
-    DoctorListComponent
+    DoctorListComponent,
+    DoctorGetComponent
   ],
   imports: [
     BrowserModule,

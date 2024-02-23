@@ -1,154 +1,44 @@
-
-
-.border {
-  max-width: 500px;
-  margin: 40px auto;
-
+/* Responsive Table CSS */
+.table-responsive {
+  overflow-x: auto;
 }
 
-form {
-  max-width: 1300px;
-  margin: 0 auto;
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  flex-direction: column;
-  padding: 10px;
-  display: flex;
-  align-items: left;
-  padding: 20px;
-  border: 1px solid #ccc;
-  border-radius: 5px;
-  background-color: #f4f4f4;
-
+/* Responsive Breakpoints */
+@media (max-width: 576px) {
+  .table-responsive {
+    overflow-x: auto;
+  }
 }
 
-label {
-  display: block;
-  margin-bottom: 0.5rem;
-  font-weight: bold;
-  font-size: 16px;
-
-}
-
-input[type="text"] {
-  display: block;
-  width: 100%;
-  height: 32x;
-  padding: 10px;
-  margin: 8px 0;
-  box-sizing: border-box;
-  border: none;
-  border-radius: 4px;
-  //background-color: #e8e8e8;
-}
-
-
-/* Style the submit button */
-button[type="submit"] {
-  background-color: #4CAF50;
-  color: white;
-  padding: 12px 20px;
-  border: none;
-  border-radius: 4px;
-  cursor: pointer;
-  font-size: 16px;
-  width: 150px;
-  margin-right: 8px;
-  //d-flex justify-content-between
-}
-
-button[type="reset"] {
-  background-color: #e60f0f;
-  color: white;
-  padding: 12px 20px;
-  border: none;
-  border-radius: 4px;
-  cursor: pointer;
-  font-size: 16px;
-  width: 150px;
-  margin-right: 20px;
-
-}
-
-
-/* Remove hover effect */
-.table tbody tr:hover {
-  background-color: transparent;
-}
-
-/* Set color property */
+/* Optional: Styling for the table */
 .table-bordered {
   border: 1px solid #dee2e6;
 }
 
 .table-striped tbody tr:nth-of-type(odd) {
-  background-color: #f9f9f9;
+  background-color: rgba(0, 0, 0, 0.05);
 }
 
-.table-striped tbody tr:nth-of-type(even) {
-  background-color: #fff;
+.table th,
+.table td {
+  padding: 0.75rem;
+  vertical-align: top;
+  border-top: 1px solid #dee2e6;
 }
 
-.table {
-  border-color: #dee2e6;
-}
-
+/* Center align text in table cells */
 .text-center {
-  text-align: center !important;
-}
-
-.button-center {
-  display: flex;
-  justify-content: center;
-}
-
-.action-buttons button {
-  padding: 0.5rem 1rem;
-  margin-right: 5px;
-  color: #fff;
-}
-
-.action-buttons .btn-primary {
-  background-color: #007bff;
-  border-color: #007bff;
-}
-
-.action-buttons .btn-primary:hover {
-  background-color: #0062cc;
-  border-color: #005cbf;
-}
-
-.action-buttons .btn-danger {
-  background-color: #dc3545;
-  border-color: #dc3545;
-}
-
-.action-buttons .btn-danger:hover {
-  background-color: #c82333;
-  border-color: #bd2130;
-}
-
-.action-buttons .btn-secondary {
-  background-color: #6c757d;
-  border-color: #6c757d;
-}
-
-.action-buttons .btn-secondary:hover {
-  background-color: #5a6268;
-  border-color: #545b62;
-}
-
-.table th {
-  background-color: #b5e751;
-  font-weight: bold;
   text-align: center;
-  color: black;
 }
-/* Custom table header styles */
-// .table-custom th {
-//   text-align: center;
-//   font-weight: bold;
-//   color: black;
-// }
 
+/* User Action Buttons */
+.btn-group .btn {
+  padding: 0.5rem 1rem;
+}
+
+/* Adjust margin for smaller screens */
+@media (max-width: 576px) {
+  .btn-group .btn {
+    margin-bottom: 5px;
+  }
+}

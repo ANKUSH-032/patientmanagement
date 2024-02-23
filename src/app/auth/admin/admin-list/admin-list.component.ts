@@ -47,7 +47,7 @@ export class AdminListComponent implements OnInit {
             next: 'Next',
             previous: 'Previous'
           },
-          search: 'Patient Name Search:',
+          search: 'Admin Name Search:',
           lengthMenu: 'Show _MENU_ entries',
           info: 'Showing _START_ to _END_ of _TOTAL_ entries',
           infoEmpty: 'Showing 0 to 0 of 0 entries',
@@ -88,70 +88,25 @@ export class AdminListComponent implements OnInit {
       // Handle error
     }
   );
+
+}
+
+deleteadmin(userid : any){
+ 
+  this.authService.delete('User/delete', `?UserId=${userid}`).subscribe((data) => {
+    this.patientList = data;
+    this.toastr.success('User Delete Successfully');
+    
+  });
+
+
+  
+
 }
   ngOnDestroy(): void {
     this.dtTrigger.unsubscribe();
   }
-  //   getPatientList() {
-  //     let self = this;
-  //     this.dtOptions = {
-  //         processing: true,
-  //         serverSide: true,
-  //         pagingType: 'full_numbers',
-  //         pageLength: 10,
-  //         responsive: true, // Add responsive option
-
-  //         language: {
-  //             emptyTable: "No data available in the table",
-  //             processing: '<div class="loader-wrapper"><span>Wait Data is loading... </span>&nbsp;&nbsp; <span class="loader"></span></div>',
-  //             search: "INPUT",
-  //             searchPlaceholder: "Search Technician Name",
-  //             paginate: {
-  //                 first: self.commonService.firstPage,
-  //                 last: self.commonService.lastPage,
-  //                 next: self.commonService.nextPage,
-  //                 previous: self.commonService.previousPage
-  //             }
-  //         },
-  //         order: [],
-  //         ajax: {
-  //             url: environment.api_url + 'User/list',
-  //             type: 'POST',
-  //             contentType: 'application/json',
-  //             'beforeSend': function (request: any) {
-  //                 const token = 'Bearer ' + localStorage.getItem('token');
-  //                 request.setRequestHeader('Authorization', token);
-  //             },
-  //             data: function (data: any) {
-  //                 data['data'] = 'data';
-  //                 return JSON.stringify(data);
-  //             },
-  //             complete: () => {
-  //                 this.loading = false;
-  //             },
-  //         },
-  //         initComplete: function () {
-  //             $('#technicianList_filter input').unbind();
-  //             $('#technicianList_filter input').bind('keyup', function (e) {
-  //                 var table = $('#technicianList').DataTable();
-  //                 var val = $('#technicianList_filter input').val();
-  //                 if (String(val).length > 3 || String(val).length == 0) {
-  //                     table.search(String(val)).draw();
-  //                 }
-  //             });
-  //         },
-  //         columns: [
-  //             { data: "firstName", className: "text-center", orderable: true, title: "First Name", render: function (data: any, type: any, row: any, meta: any) { return data ? data : '-' } },
-  //             { data: "lastName", className: "text-center", title: "Last Name", orderable: true, render: function (data: any, type: any, row: any, meta: any) { return data ? data : '-' } },
-  //             { data: "email", className: "text-center", title: "Email", orderable: false, render: function (data: any, type: any, row: any, meta: any) { return data ? data : '-' } },
-  //             { data: "roleID", className: "text-center", title: "Role Name", orderable: false, render: function (data: any, typ: any, row: any, meta: any) { return data ? data : '-' } },
-  //             { data: "address", className: "text-center", title: "Address", orderable: false, render: function (data: any, type: any, row: any, meta: any) { return data ? data : '-' } },
-  //             { data: "hospitalName", className: "text-center", title: "Hospital Name", orderable: false, render: function (data: any, type: any, row: any, meta: any) { return data ? data : '-' } },
-  //             { data: "zipCode", className: "text-center", title: "Zip Code", orderable: false, render: function (data: any, type: any, row: any, meta: any) { return data ? data : '-' } },
-  //             { data: "gender", className: "text-center", title: "Gender", render: function (data: any, type: any, row: any, meta: any) { return data ? data : '-' } },
-  //         ],
-  //     };
-  // }
+  
 
 
 }
