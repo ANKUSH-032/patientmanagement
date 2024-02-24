@@ -190,24 +190,7 @@
         </div>
 
         <!-- Dropdown Form Element for Role -->
-        <div class="form-group dropdown-form-group">
-          <div class="input-group">
-            <span class="input-group-text">
-              <i class="fa fa-user"></i>
-            </span>
-            <select class="form-control" formControlName="RoleID">
-              <option value="" disabled selected>Select Role</option>
-              <option *ngFor="let role of roleOptions" [value]="role.value">{{ role.label }}</option>
-            </select>
-          </div>
-          <small
-            class="text-danger"
-            *ngIf="
-              signupForm.controls['RoleID'].dirty &&
-              signupForm.controls['RoleID'].invalid
-            "
-          >*Role is required</small>
-        </div>
+        
 
         <!-- Dropdown Form Element for Gender -->
         <div class="form-group dropdown-form-group">
@@ -230,9 +213,9 @@
         </div>
 
         <!-- Forget Password link -->
-        <div class="form-inline fr mt-4">
+        <!-- <div class="form-inline fr mt-4">
           <a id="forget" class="font-weight-bold">Forget Password?</a>
-        </div>
+        </div> -->
 
         <!-- Submit Button -->
         <button type="submit" class="btn btn-primary btn-block mt-4 w-100">

@@ -274,3 +274,9 @@ form {
 .toast-error {
   background-color: red !important;
 }
+
+.fixedFooter {
+  position: fixed;
+  width: 100%;
+  top: 670px;
+}

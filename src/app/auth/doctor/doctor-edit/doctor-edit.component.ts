@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
 import { Subscription } from 'rxjs';
@@ -7,11 +7,11 @@ import ValiadateForm from 'src/app/helper/validator';
 import { AuthService } from 'src/app/services/auth.service';
 
 @Component({
-  selector: 'app-admin-edit',
-  templateUrl: './admin-edit.component.html',
-  styleUrls: ['./admin-edit.component.scss']
+  selector: 'app-doctor-edit',
+  templateUrl: './doctor-edit.component.html',
+  styleUrls: ['./doctor-edit.component.scss']
 })
-export class AdminEditComponent implements OnInit {
+export class DoctorEditComponent implements OnInit {
   adminEditForm!: FormGroup;
   genderOptions  :any ;
   roleOptions  : any;
@@ -34,8 +34,8 @@ export class AdminEditComponent implements OnInit {
     ];
     
     this.roleOptions = [
-      { value: 'admin', label: 'Admin' },
-     // { value: 'doctor', label: 'Doctor' },
+     // { value: 'admin', label: 'Admin' },
+      { value: 'doctor', label: 'Doctor' },
       //{ value: 'nurse', label: 'Nurse' },
       // Add more roles as needed
     ];
@@ -49,7 +49,7 @@ export class AdminEditComponent implements OnInit {
       HospitalName: ['', Validators.required],
       ZipCode: ['', Validators.required],
       Gender: ['', Validators.required],
-     // Password: ['', Validators.required],
+    
     });
     this.subscriptions.push(
       this.activeRoute.params.subscribe((data) => {
@@ -63,7 +63,7 @@ export class AdminEditComponent implements OnInit {
 
 
   loadUserData(userId: any): void {
-    this.authService.get('User/get', `?UserId=${userId}`).subscribe(
+    this.authService.get('Doctors/get', `?DoctorId=${userId}`).subscribe(
         (res : any) => {
             this.userDetails = res;
         
@@ -88,18 +88,18 @@ export class AdminEditComponent implements OnInit {
     );
 
       }
-  updateProduct(): void {
-
+  updateDoctor(): void {
+//debugger;
     if (this.adminEditForm.valid) {
       console.log( this.adminEditForm.value,this.userId);
 
-      const updatedFormValue = { ...this.adminEditForm.value, userId: this.userId };
+      const updatedFormValue = { ...this.adminEditForm.value, doctorId: this.userId };
       this.subscriptions.push(
-        this.authService.editdata('User/update',updatedFormValue).subscribe(
+        this.authService.editdata('Doctors/update',updatedFormValue).subscribe(
           (response) => {
             
             this.toastr.success('Admin details edited successfully');
-            this.route.navigate(['/list-admin']);
+            this.route.navigate(['/list-doctor']);
           },
           
           (err) => {
@@ -120,5 +120,6 @@ export class AdminEditComponent implements OnInit {
   ngOnDestroy(): void {
     this.subscriptions.forEach((subscription) => subscription.unsubscribe());
   }
+
 
 }

@@ -99,10 +99,8 @@ deleteadmin(userid : any){
     
   });
 
-
-  
-
 }
+
   ngOnDestroy(): void {
     this.dtTrigger.unsubscribe();
   }

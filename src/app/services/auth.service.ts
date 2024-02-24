@@ -25,20 +25,13 @@ export class AuthService {
     }));
   }
   postRequest(url: any, data: any): Observable<any> {
-    // Get the token from localStorage
     const token = localStorage.getItem('token');
-    
-    // Create headers
     let headers = new HttpHeaders({
       'Content-Type': 'application/json'
     });
-  
-    // Include Authorization header if token is available
     if (token) {
       headers = headers.set('Authorization', `Bearer ${token}`);
     }
-  
-    // Include headers in the request
     return this.http.post(baseURL + url, data, { headers }).pipe(map((response: any) => {
       return response;
     }));
@@ -50,6 +43,10 @@ export class AuthService {
 
   delete(url: any,id: string) {
     return this.http.delete(baseURL+ url + id)
+  }
+
+  editdata(url: any, data: any) {
+    return this.http.post(baseURL+ url , data)
   }
 
 

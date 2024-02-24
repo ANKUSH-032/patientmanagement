@@ -1,13 +1,14 @@
+
 <!-- Your Angular component's HTML file -->
 <div class="login-container">
     <div class="outer">
       <div class="panel">
         <div class="panel-heading">
-          <h3 class="pt-3 font-weight-bold text-dark">Update Admin Details</h3>
+          <h3 class="pt-3 font-weight-bold text-dark">Add Admin</h3>
         </div>
     
         <div class="panel-body p-3">
-          <form [formGroup]="adminEditForm" class="horizontal-form" >
+          <form [formGroup]="addAdmin" class="horizontal-form" (ngSubmit)="addAdminData()">
     
             <!-- First Name -->
             <div class="form-group">
@@ -25,8 +26,8 @@
               <small
                 class="text-danger"
                 *ngIf="
-                  adminEditForm.controls['FirstName'].dirty &&
-                  adminEditForm.controls['FirstName'].invalid
+                  addAdmin.controls['FirstName'].dirty &&
+                  addAdmin.controls['FirstName'].invalid
                 "
               >*First Name is required</small>
             </div>
@@ -47,8 +48,8 @@
               <small
                 class="text-danger"
                 *ngIf="
-                  adminEditForm.controls['LastName'].dirty &&
-                  adminEditForm.controls['LastName'].invalid
+                  addAdmin.controls['LastName'].dirty &&
+                  addAdmin.controls['LastName'].invalid
                 "
               >*Last Name is required</small>
             </div>
@@ -69,14 +70,14 @@
               <small
                 class="text-danger"
                 *ngIf="
-                  adminEditForm.controls['Email'].dirty &&
-                  adminEditForm.controls['Email'].invalid
+                  addAdmin.controls['Email'].dirty &&
+                  addAdmin.controls['Email'].invalid
                 "
               >*Email is required</small>
             </div>
     
             <!-- Password -->
-            <!-- <div class="form-group">
+            <div class="form-group">
               <div class="input-group">
                 <span class="input-group-text">
                   <i class="fa fa-lock"></i>
@@ -95,11 +96,11 @@
               <small
                 class="text-danger"
                 *ngIf="
-                  adminEditForm.controls['Password'].dirty &&
-                  adminEditForm.controls['Password'].invalid
+                  addAdmin.controls['Password'].dirty &&
+                  addAdmin.controls['Password'].invalid
                 "
               >*Password is required</small>
-            </div> -->
+            </div>
     
             <!-- Contact No -->
             <div class="form-group">
@@ -117,8 +118,8 @@
               <small
                 class="text-danger"
                 *ngIf="
-                  adminEditForm.controls['ContactNo'].dirty &&
-                  adminEditForm.controls['ContactNo'].invalid
+                  addAdmin.controls['ContactNo'].dirty &&
+                  addAdmin.controls['ContactNo'].invalid
                 "
               >*Contact No is required</small>
             </div>
@@ -139,8 +140,8 @@
               <small
                 class="text-danger"
                 *ngIf="
-                  adminEditForm.controls['HospitalName'].dirty &&
-                  adminEditForm.controls['HospitalName'].invalid
+                  addAdmin.controls['HospitalName'].dirty &&
+                  addAdmin.controls['HospitalName'].invalid
                 "
               >*Hospital Name is required</small>
             </div>
@@ -161,8 +162,8 @@
               <small
                 class="text-danger"
                 *ngIf="
-                  adminEditForm.controls['Address'].dirty &&
-                  adminEditForm.controls['Address'].invalid
+                  addAdmin.controls['Address'].dirty &&
+                  addAdmin.controls['Address'].invalid
                 "
               >*Address is required</small>
             </div>
@@ -183,8 +184,8 @@
               <small
                 class="text-danger"
                 *ngIf="
-                  adminEditForm.controls['ZipCode'].dirty &&
-                  adminEditForm.controls['ZipCode'].invalid
+                  addAdmin.controls['ZipCode'].dirty &&
+                  addAdmin.controls['ZipCode'].invalid
                 "
               >*Zip Code is required</small>
             </div>
@@ -203,8 +204,8 @@
               <small
                 class="text-danger"
                 *ngIf="
-                  adminEditForm.controls['RoleID'].dirty &&
-                  adminEditForm.controls['RoleID'].invalid
+                  addAdmin.controls['RoleID'].dirty &&
+                  addAdmin.controls['RoleID'].invalid
                 "
               >*Role is required</small>
             </div>
@@ -223,21 +224,25 @@
               <small
                 class="text-danger"
                 *ngIf="
-                  adminEditForm.controls['Gender'].dirty &&
-                  adminEditForm.controls['Gender'].invalid
+                  addAdmin.controls['Gender'].dirty &&
+                  addAdmin.controls['Gender'].invalid
                 "
               >*Gender is required</small>
             </div>
     
+            <!-- Forget Password link -->
+            <div class="form-inline fr mt-4">
+              <a id="forget" class="font-weight-bold">Forget Password?</a>
+            </div>
     
             <!-- Submit Button -->
-            <button type="submit" class="btn btn-primary btn-block mt-4 w-100" (click)="updateProduct()">
-              Update
+            <button type="submit" class="btn btn-primary btn-block mt-4 w-100">
+              Add
             </button>
     
             <!-- Already have an account link -->
             <div class="text-center pt-4 text-muted">
-              Already have an account? <a id="forget" routerLink="/list-admin">Back To List</a>
+              <a id="forget" routerLink="/list-admin">Back To List</a>
             </div>
     
           </form>

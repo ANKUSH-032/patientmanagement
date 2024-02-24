@@ -25,6 +25,10 @@ import { AdminEditComponent } from './auth/admin/admin-edit/admin-edit.component
 import { AdminGetComponent } from './auth/admin/admin-get/admin-get.component';
 import { DoctorListComponent } from './auth/doctor/doctor-list/doctor-list.component';
 import { DoctorGetComponent } from './auth/doctor/doctor-get/doctor-get.component';
+import { DoctorEditComponent } from './auth/doctor/doctor-edit/doctor-edit.component';
+import { PatientEditComponent } from './auth/patient-edit/patient-edit.component';
+import { AdminAddComponent } from './auth/admin/admin-add/admin-add.component';
+import { AddDoctorComponent } from './auth/doctor/add-doctor/add-doctor.component';
 
 //import { DataTablesModule } from 'angular-datatables';
 @NgModule({
@@ -42,7 +46,11 @@ import { DoctorGetComponent } from './auth/doctor/doctor-get/doctor-get.componen
     AdminEditComponent,
     AdminGetComponent,
     DoctorListComponent,
-    DoctorGetComponent
+    DoctorGetComponent,
+    DoctorEditComponent,
+    PatientEditComponent,
+    AdminAddComponent,
+    AddDoctorComponent
   ],
   imports: [
     BrowserModule,

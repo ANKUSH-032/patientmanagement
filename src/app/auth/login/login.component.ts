@@ -67,6 +67,7 @@ export class LoginComponent implements OnInit {
             localStorage.setItem('isLoggedIn', 'true');
             localStorage.setItem('token', res.userdetails.token);
             this.storageService.set('user', res.data);
+            this.storageService.set('token', res.userdetails.token);
             this.toastr.success(res.message || 'Login successful'); 
             this.route.navigateByUrl('/list-admin');
           } else  {
