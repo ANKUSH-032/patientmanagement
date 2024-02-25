@@ -29,6 +29,10 @@ import { DoctorEditComponent } from './auth/doctor/doctor-edit/doctor-edit.compo
 import { PatientEditComponent } from './auth/patient-edit/patient-edit.component';
 import { AdminAddComponent } from './auth/admin/admin-add/admin-add.component';
 import { AddDoctorComponent } from './auth/doctor/add-doctor/add-doctor.component';
+import { AppointmentListComponent } from './auth/appointment/appointment-list/appointment-list.component';
+import { AppointmentAddComponent } from './auth/appointment/appointment-add/appointment-add.component';
+import { AppointmentEditComponent } from './auth/appointment/appointment-edit/appointment-edit.component';
+import { AppointmentGetComponent } from './auth/appointment/appointment-get/appointment-get.component';
 
 //import { DataTablesModule } from 'angular-datatables';
 @NgModule({
@@ -50,7 +54,11 @@ import { AddDoctorComponent } from './auth/doctor/add-doctor/add-doctor.componen
     DoctorEditComponent,
     PatientEditComponent,
     AdminAddComponent,
-    AddDoctorComponent
+    AddDoctorComponent,
+    AppointmentListComponent,
+    AppointmentAddComponent,
+    AppointmentEditComponent,
+    AppointmentGetComponent
   ],
   imports: [
     BrowserModule,

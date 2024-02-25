@@ -53,14 +53,6 @@ export class DoctorListComponent implements OnInit {
           infoEmpty: 'Showing 0 to 0 of 0 entries',
           infoFiltered: '(filtered from _MAX_ total entries)'
         },
-    
-        // columnDefs: [
-        //   { width: '50px', targets: 0 },
-        //   // Enable sorting on the "First Name" column
-        //   { orderable: true, targets: [0] },
-        //   // Enable sorting on the "Last Name" column
-        //   { orderable: true, targets: [1] },
-        // ],
       };
     }
     
