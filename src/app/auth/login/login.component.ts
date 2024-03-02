@@ -54,6 +54,7 @@ export class LoginComponent implements OnInit {
   }
 
   onLogin() {
+   // debugger;
     this.submitted = true;
   
     if (this.loginForm.valid) {
@@ -68,10 +69,13 @@ export class LoginComponent implements OnInit {
             localStorage.setItem('token', res.userdetails.token);
             this.storageService.set('user', res.data);
             this.storageService.set('token', res.userdetails.token);
+            this.storageService.set('role', res.userdetails.role);
             this.toastr.success(res.message || 'Login successful'); 
-            if(res.userdetails.RoleID = 'Admin'){
+            console.log(res.userdetails.role);
+            
+            if(res.userdetails.role === 'admin'){
               this.route.navigateByUrl('/list-admin');
-            }else if(res.userdetails.RoleID = 'Doctor'){
+            }else if(res.userdetails.role === 'doctor'){
               this.route.navigateByUrl('/list-doctor');
             }else{
               this.route.navigateByUrl('/list-patients');
@@ -84,7 +88,7 @@ export class LoginComponent implements OnInit {
           }
         },
         (res) => {
-          this.toastr.error('Login unsuccessful');
+          this.toastr.error(res.message || 'Login unsuccessful');
          // this.toastr.error('Error in login request'); 
         }
       );

@@ -30,8 +30,8 @@ export class AddDoctorComponent implements OnInit {
     ];
     
     this.roleOptions = [
-      { value: 'admin', label: 'Admin' },
-      //{ value: 'doctor', label: 'Doctor' },
+   //   { value: 'admin', label: 'Admin' },
+      { value: 'doctor', label: 'Doctor' },
      // { value: 'nurse', label: 'Nurse' },
       // Add more roles as needed
     ];

@@ -15,6 +15,10 @@ import { DoctorEditComponent } from './auth/doctor/doctor-edit/doctor-edit.compo
 import { PatientEditComponent } from './auth/patient-edit/patient-edit.component';
 import { AdminAddComponent } from './auth/admin/admin-add/admin-add.component';
 import { AddDoctorComponent } from './auth/doctor/add-doctor/add-doctor.component';
+import { AppointmentListComponent } from './auth/appointment/appointment-list/appointment-list.component';
+import { AppointmentAddComponent } from './auth/appointment/appointment-add/appointment-add.component';
+import { AppointmentEditComponent } from './auth/appointment/appointment-edit/appointment-edit.component';
+import { AppointmentGetComponent } from './auth/appointment/appointment-get/appointment-get.component';
 
 
 const routes: Routes = [
@@ -38,6 +42,11 @@ const routes: Routes = [
     { path: 'list-patients', component: PatientlistComponent,canActivate: [AuthguardService] },
     { path: 'get-patinet/:id', component: PatientGetComponent, canActivate: [AuthguardService] },
     { path: 'edit-patinet/:id', component: PatientEditComponent, canActivate: [AuthguardService] },
+
+    { path: 'list-appointment', component: AppointmentListComponent,canActivate: [AuthguardService] },
+    { path: 'get-appointment/:id', component: AppointmentGetComponent, canActivate: [AuthguardService] },
+    { path: 'edit-appointment/:id', component: AppointmentEditComponent, canActivate: [AuthguardService] },
+    { path: 'add-appointment', component: AppointmentAddComponent, canActivate: [AuthguardService] },
 ];
 
 @NgModule({

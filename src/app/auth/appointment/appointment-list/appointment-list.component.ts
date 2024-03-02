@@ -1,5 +1,9 @@
 import { Component, OnInit } from '@angular/core';
+import { ToastrService } from 'ngx-toastr';
 import { Subject } from 'rxjs';
+import { IAppointmentData } from 'src/app/helper/model/appointment';
+import { AuthService } from 'src/app/services/auth.service';
+import { CommonService } from 'src/app/services/common.service';
 
 @Component({
   selector: 'app-appointment-list',
@@ -10,19 +14,18 @@ export class AppointmentListComponent implements OnInit {
 
   dtOptions: DataTables.Settings = {};
   dtTrigger: Subject<any> = new Subject<any>();
-  patientList: any = [];
-  patinet: DoctorList = {
-    firstName: '',
-    lastName: '',
-    contactNo: '',
-    gender: '',
-    email: '',
-    roleId: '',
-    address: '',
-    hospitalName: '',
-    zipCode: ''
-  }
-  constructor(private authService: AuthService,
+  appointmet_list: any = [];
+  appointmentdata : IAppointmentData = {
+    AppointmentTitle: '',
+    AppointmentDescription: '',
+    AppointmentType: '',
+    AppointmentDate: '',
+    AppointmentTime: '',
+    DoctorId: '',
+    PatientId: ''
+} 
+  constructor(
+    private authService: AuthService,
     private commonService: CommonService,
     private toastr: ToastrService,) { }
     ngOnInit(): void {
@@ -43,7 +46,7 @@ export class AppointmentListComponent implements OnInit {
             next: 'Next',
             previous: 'Previous'
           },
-          search: 'Doctor Name Search:',
+          search: 'Appointment Search:',
           lengthMenu: 'Show _MENU_ entries',
           info: 'Showing _START_ to _END_ of _TOTAL_ entries',
           infoEmpty: 'Showing 0 to 0 of 0 entries',
@@ -66,9 +69,9 @@ export class AppointmentListComponent implements OnInit {
     };
   
 
-  this.authService.postReq('Doctors/list',apiParams).subscribe(
-    (data) => {
-      this.patientList = data['data'];
+  this.authService.postReq('Appointment/list',apiParams).subscribe(
+    (data : any) => {
+      this.appointmet_list = data['data'];
       this.dtTrigger.next(); // Trigger DataTable update after data is loaded
     },
     (error) => {
@@ -80,8 +83,8 @@ export class AppointmentListComponent implements OnInit {
 
 deletedoctor(userid : any){
  
-  this.authService.delete('Doctors/delete', `?DoctorId=${userid}`).subscribe((data) => {
-    this.patientList = data;
+  this.authService.delete('Appointment/delete', `?DoctorId=${userid}`).subscribe((data) => {
+    this.appointmet_list = data;
     this.toastr.success('Doctor Delete Successfully');
     
   });

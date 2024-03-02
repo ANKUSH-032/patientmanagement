@@ -2,10 +2,10 @@
     <nav>
      <!-- <a routerLink="/home">Home</a> -->
       <!-- <a routerLink="/user-list">Users</a> -->
-      <a routerLink="/list-admin">Admin List</a>
-      <a routerLink="/list-doctor">Doctor List</a>
-      <a routerLink="/list-patients">Patient List</a>
-      <a routerLink="/list-appointment">Appointment List</a>
+      <a *ngIf="onViewData()" routerLink="/list-admin">Admin List</a>
+      <a *ngIf="onViewData()" routerLink="/list-doctor">Doctor List</a>
+      <a *ngIf="onViewData()" routerLink="/list-patients">Patient List</a>
+      <a *ngIf="onViewData()" routerLink="/list-appointment">Appointment List</a>
       <!-- <a routerLink="/about">About</a> -->
       <!-- <a routerLink="/contact">Contact</a> -->
       

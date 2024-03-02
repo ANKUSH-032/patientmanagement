@@ -1,1 +1,62 @@
-<p>appointment-get works!</p>
+<div class="border">
+
+    <table cdk-table [dataSource]="appointmentDetails.data">
+
+
+        <ng-container cdkColumnDef="appointmentTitle">
+            <th cdk-header-cell *cdkHeaderCellDef> Appointment Title</th>
+            <td cdk-cell *cdkCellDef="let row"> {{ row.appointmentTitle }} </td>
+        </ng-container>
+
+        <ng-container cdkColumnDef="appointmentDescription">
+            <th cdk-header-cell *cdkHeaderCellDef> Appointment Description </th>
+            <td cdk-cell *cdkCellDef="let row"> {{row.appointmentDescription}} </td>
+        </ng-container>
+
+
+        <ng-container cdkColumnDef="appointmentType">
+            <th cdk-header-cell *cdkHeaderCellDef> Appointment Type </th>
+            <td cdk-cell *cdkCellDef="let row"> {{row.appointmentType}} </td>
+        </ng-container>
+
+        <ng-container cdkColumnDef="appointmentDate">
+            <th cdk-header-cell *cdkHeaderCellDef> appointment Date </th>
+            <td cdk-cell *cdkCellDef="let row"> {{row.appointmentDate}} </td>
+        </ng-container>
+
+        <ng-container cdkColumnDef="appointmentTime">
+            <th cdk-header-cell *cdkHeaderCellDef> Appointment Time </th>
+            <td cdk-cell *cdkCellDef="let row"> {{row.appointmentTime}} </td>
+        </ng-container>
+        <!-- <ng-container cdkColumnDef="roleName">
+            <th cdk-header-cell *cdkHeaderCellDef> Role Name </th>
+            <td cdk-cell *cdkCellDef="let row"> {{row.roleName}} </td>
+        </ng-container>
+        <ng-container cdkColumnDef="zipCode">
+            <th cdk-header-cell *cdkHeaderCellDef>Zip Code </th>
+            <td cdk-cell *cdkCellDef="let row"> {{row.zipCode}} </td>
+        </ng-container>
+        <ng-container cdkColumnDef="address">
+            <th cdk-header-cell *cdkHeaderCellDef> Address </th>
+            <td cdk-cell *cdkCellDef="let row"> {{row.address}} </td>
+        </ng-container>
+        <ng-container cdkColumnDef="hospitalName">
+            <th cdk-header-cell *cdkHeaderCellDef> Hospital Name </th>
+            <td cdk-cell *cdkCellDef="let row"> {{row.hospitalName}} </td>
+        </ng-container> -->
+
+        <ng-container cdkColumnDef="action">
+            <th cdk-header-cell *cdkHeaderCellDef> Action </th>
+            <td cdk-cell *cdkCellDef="let row">
+                <button type="reset" class="btn btn-primary mr-2" routerLink="/list-appointment">Back</button>
+            </td>
+        </ng-container>
+
+        <tr cdk-header-row
+            *cdkHeaderRowDef="['appointmentTitle', 'appointmentDescription','appointmentType','appointmentDate','appointmentTime','action']">
+        </tr>
+        <tr cdk-row
+            *cdkRowDef="let row; columns: ['appointmentTitle', 'appointmentDescription','appointmentType','appointmentDate','appointmentTime','action']">
+        </tr>
+    </table>
+</div>

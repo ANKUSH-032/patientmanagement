@@ -1,1 +1,69 @@
-<p>appointment-add works!</p>
+
+<!-- Your Angular component's HTML file -->
+<div class="login-container">
+    <div class="outer">
+      <div class="panel">
+        <div class="panel-heading">
+          <h3 class="pt-3 font-weight-bold text-dark">Add Appointment</h3>
+        </div>
+    
+        <div class="panel-body p-3">
+          <form [formGroup]="addAppointment" class="horizontal-form" (ngSubmit)="addAppointmentData()">
+    
+            <!-- First Name -->
+            <div class="form-group">
+              <div class="input-group">
+                <span class="input-group-text">
+                  <i class="fa fa-user"></i>
+                </span>
+                <input
+                  type="text"
+                  class="form-control"
+                  formControlName="appointmentTitle"
+                  placeholder="Appointment Title"
+                />
+              </div>
+              <small
+                class="text-danger"
+                *ngIf="
+                addAppointment.controls['FirstName'].dirty &&
+                addAppointment.controls['FirstName'].invalid
+                "
+              >*First Name is required</small>
+            </div>
+    
+            <!-- Last Name -->
+            <div class="form-group">
+              <div class="input-group">
+                <span class="input-group-text">
+                  <i class="fa fa-user"></i>
+                </span>
+                <input
+                  type="text"
+                  class="form-control"
+                  formControlName="LastName"
+                  placeholder="Last Name"
+                />
+              </div>
+             
+            </div>
+    
+    
+          
+    
+           
+            <!-- Submit Button -->
+            <button type="submit" class="btn btn-primary btn-block mt-4 w-100">
+              Add
+            </button>
+    
+            <!-- Already have an account link -->
+            <div class="text-center pt-4 text-muted">
+              <a id="forget" routerLink="/list-admin">Back To List</a>
+            </div>
+    
+          </form>
+        </div>
+      </div>
+    </div>
+    </div>
