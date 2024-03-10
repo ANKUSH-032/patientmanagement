@@ -5,5 +5,8 @@ export interface IAppointmentData {
     AppointmentDate: string,
     AppointmentTime: string,
     DoctorId: string,
-    PatientId: string
+    PatientId: string,
+    Status : string,
+    DoctorName:string,
+    PatinetName : string,
 } 

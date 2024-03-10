@@ -101,14 +101,14 @@ export class PatientEditComponent implements OnInit {
         this.authService.editdata('Patient/update',updatedFormValue).subscribe(
           (response) => {
             
-            this.toastr.success('Admin details edited successfully');
+            this.toastr.success('Patient details edited successfully');
             this.route.navigate(['/list-patients']);
           },
           
           (err) => {
             console.log(err);
          
-            this.toastr.error('Admin details edit failed');
+            this.toastr.error('Patient details edit failed');
           }
         )
         

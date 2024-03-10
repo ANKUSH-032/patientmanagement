@@ -1,34 +1,39 @@
 import { Component, OnInit } from '@angular/core';
 import { ToastrService } from 'ngx-toastr';
 import { Subject } from 'rxjs';
-import { patientList } from 'src/app/helper/model/patientList';
+import { IAppointmentData } from 'src/app/helper/model/appointment';
 import { AuthService } from 'src/app/services/auth.service';
 import { CommonService } from 'src/app/services/common.service';
+import { StorageServiceService } from 'src/app/services/storage-service.service';
 
 @Component({
-  selector: 'app-admin-list',
-  templateUrl: './admin-list.component.html',
-  styleUrls: ['./admin-list.component.scss']
+  selector: 'app-list-appointmentdata',
+  templateUrl: './list-appointmentdata.component.html',
+  styleUrls: ['./list-appointmentdata.component.scss']
 })
-export class AdminListComponent implements OnInit {
+export class ListAppointmentdataComponent implements OnInit {
 
   dtOptions: DataTables.Settings = {};
   dtTrigger: Subject<any> = new Subject<any>();
-  patientList: any = [];
-  patinet: patientList = {
-    firstName: '',
-    lastName: '',
-    contactNo: '',
-    gender: '',
-    email: '',
-    roleId: '',
-    address: '',
-    hospitalName: '',
-    zipCode: ''
+  appointmet_list: any = [];
+  appointmentdata: IAppointmentData = {
+    AppointmentTitle: '',
+    AppointmentDescription: '',
+    AppointmentType: '',
+    AppointmentDate: '',
+    AppointmentTime: '',
+    DoctorId: '',
+    PatientId: '',
+    Status: '',
+    DoctorName: '',
+    PatinetName: ''
+
   }
-  constructor(private authService: AuthService,
+  constructor(
+    private authService: AuthService,
     private commonService: CommonService,
-    private toastr: ToastrService,) { }
+    private toastr: ToastrService,
+    private storageService : StorageServiceService,) { }
 
   ngOnInit(): void {
     this.dtOptions = {
@@ -48,13 +53,12 @@ export class AdminListComponent implements OnInit {
           next: 'Next',
           previous: 'Previous'
         },
-        search: 'Admin Name Search:',
+        search: 'Appointment Search:',
         lengthMenu: 'Show _MENU_ entries',
         info: 'Showing _START_ to _END_ of _TOTAL_ entries',
         infoEmpty: 'Showing 0 to 0 of 0 entries',
         infoFiltered: '(filtered from _MAX_ total entries)'
       },
-
     };
   }
 
@@ -70,11 +74,12 @@ export class AdminListComponent implements OnInit {
       PageSize: -1,
       SortCol: ''
     };
+    const DoctorId = this.storageService.get('doctoruserId')
+    const paramRequest = { ...apiParams, DoctorId: DoctorId };
 
-
-    this.authService.postReq('User/list', apiParams).subscribe(
-      (data) => {
-        this.patientList = data['data'];
+    this.authService.postReq('Appointment/list/appointment', paramRequest).subscribe(
+      (data: any) => {
+        this.appointmet_list = data['data'];
         this.dtTrigger.next(); // Trigger DataTable update after data is loaded
       },
       (error) => {
@@ -82,23 +87,19 @@ export class AdminListComponent implements OnInit {
         // Handle error
       }
     );
-
   }
 
-  deleteadmin(userid: any) {
-
-    this.authService.delete('User/delete', `?UserId=${userid}`).subscribe((data) => {
-      this.patientList = data;
-      this.toastr.success('User Delete Successfully');
+  updateAppointment(appointmentId: any) {
+   
+      this.authService.patch('Appointment/update/status', { AppointmentId: appointmentId }).subscribe((data) => {
+      this.appointmet_list = data;
+      this.toastr.success('Appointment Accept Successfully');
 
     });
-
   }
-
   ngOnDestroy(): void {
     this.dtTrigger.unsubscribe();
   }
-
 
 
 }

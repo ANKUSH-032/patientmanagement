@@ -16,9 +16,19 @@ export class HeaderComponent implements OnInit {
   onViewData(): boolean {
 
     const viewData = this.storageService.get('role') 
-    
       return viewData === 'admin'
-   
+  }
+
+  onappointmentData(): boolean {
+
+    const viewData = this.storageService.get('role') 
+      return viewData === 'patient'
+  }
+
+  onDoctorData(): boolean {
+
+    const viewData = this.storageService.get('role') 
+      return viewData === 'doctor'
   }
 
 }

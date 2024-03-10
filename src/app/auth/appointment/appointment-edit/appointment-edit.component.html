@@ -1,1 +1,85 @@
-<p>appointment-edit works!</p>
+<div class="login-container">
+    <div class="outer">
+        <div class="panel">
+            <div class="panel-heading">
+                <h3 class="pt-3 font-weight-bold text-dark">Add Appointment</h3>
+            </div>
+
+            <div class="panel-body p-3">
+                <form [formGroup]="appointmentEditForm" class="horizontal-form" (ngSubmit)="updateAppointment()">
+                    <div class="form-group">
+                        <div class="input-group">
+                            <span class="input-group-text">
+                                <i class="fa fa-user"></i>
+                            </span>
+                            <input type="text" class="form-control" formControlName="appointmentTitle"
+                                placeholder="Appointment Title" />
+                        </div>
+
+                    </div>
+                    <div class="form-group">
+                        <div class="input-group">
+                            <span class="input-group-text">
+                                <i class="fa fa-user"></i>
+                            </span>
+                            <input type="text" class="form-control" formControlName="appointmentDescription"
+                                placeholder="Appointment Description" />
+                        </div>
+
+                    </div>
+                    <div class="form-group">
+                        <div class="input-group">
+                            <span class="input-group-text">
+                                <i class="fa fa-user"></i>
+                            </span>
+                            <input type="text" class="form-control" formControlName="appointmentType"
+                                placeholder="Appointment Type" />
+                        </div>
+
+                    </div>
+                    <div class="form-group">
+                        <div class="input-group date" id="datepicker">
+                            <span class="input-group-text">
+                                <i class="fa fa-calendar"></i>
+                            </span>
+                            <input type="date" class="form-control" formControlName="appointmentDate"
+                                placeholder="Appointment Date" (change)="onDateChange($event)" />
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <div class="input-group time" id="timepicker">
+                            <span class="input-group-text">
+                                <i class="fa fa-clock"></i>
+                            </span>
+                           
+                            <input type="time" class="form-control" formControlName="appointmentTime"
+                                placeholder="Appointment Time" (change)="onTimeChange($event)" />
+                        </div>
+                    </div>
+
+                    <div class="form-group dropdown-form-group">
+                        <div class="input-group">
+                            <span class="input-group-text">
+                                <i class="fa fa-user"></i>
+                            </span>
+                            <select class="form-control" formControlName="doctorID">
+                                <option value="" disabled selected>Select Doctor</option>
+                                <option *ngFor="let doctor  of dropdown.doctor_list" [value]="doctor .id">{{ doctor
+                                    .value}}</option>
+                            </select>
+                        </div>
+                    </div>
+              
+                    <button type="submit" class="btn btn-primary btn-block mt-4 w-100">
+                        Update
+                    </button>
+                    <div class="text-center pt-4 text-muted">
+                        <a id="forget" routerLink="/list-appointment">Back To List</a>
+                    </div>
+
+                </form>
+            </div>
+        </div>
+    </div>
+</div>

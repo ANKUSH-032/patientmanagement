@@ -2,8 +2,10 @@ import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
+import { forkJoin } from 'rxjs';
 import ValiadateForm from 'src/app/helper/validator';
 import { AuthService } from 'src/app/services/auth.service';
+import { StorageServiceService } from 'src/app/services/storage-service.service';
 
 @Component({
   selector: 'app-appointment-add',
@@ -12,54 +14,81 @@ import { AuthService } from 'src/app/services/auth.service';
 })
 export class AppointmentAddComponent implements OnInit {
 
-  type: string = 'Password';
-  isText: boolean = false;
-  eyeIcon: string = 'fa-eye-slash';
   addAppointment!: FormGroup;
-  genderOptions  :any ;
-  roleOptions  : any;
+  dropdown: any = { doctor_list: [] }
   constructor(private fb: FormBuilder,
-    private auth : AuthService,
-    private route : Router,
-    private toastr: ToastrService,) {}
+    private auth: AuthService,
+    private route: Router,
+    private toastr: ToastrService,
+    private storageService: StorageServiceService,) { }
 
   ngOnInit(): void {
-    
 
     this.addAppointment = this.fb.group({
-      appointmentTitle: ['', Validators.required],
-      appointmentDescription: ['', Validators.required],
-      appointmentType: ['', Validators.required],
-      appointmentDate : ['', Validators.required],
-      appointmentTime: ['', Validators.required],
-      patientId: ['', Validators.required],
-      doctorID: ['', Validators.required],
+      appointmentTitle: [''],
+      appointmentDescription: [''],
+      appointmentType: [''],
+      appointmentDate: [''],
+      appointmentTime: [''],
+      doctorID: [''],
     });
+
+    this.getDoctorList();
   }
-  hideshowpass() {
-    this.isText = !this.isText;
-    this.isText ? (this.eyeIcon = 'fa-eye') : (this.eyeIcon = 'fa-eye-slash');
-    this.isText ? (this.type = 'text') : (this.type = 'password');
+  onDateChange(event: any) {
+
+    const selectedDate = event.target.value;
+    this.addAppointment.patchValue({ appointmentDate: selectedDate });
   }
+  onTimeChange(event: any) {
+
+    const selectedTime = event.target.value;
+    this.addAppointment.patchValue({ appointmentTime: selectedTime });
+  }
+
 
   addAppointmentData() {
     if (this.addAppointment.valid) {
-    
-      this.auth.postRequest('Appointment/insert', this.addAppointment.value).subscribe({
+      let paientUseId = this.storageService.get('patientuserId')
+      const PatientId = paientUseId; // Corrected variable name
+// console.log(PatientId)
+      this.addAppointment.patchValue({ PatientId });
+      const addFormValue = { ...this.addAppointment.value, PatientId: PatientId };
+      console.log(addFormValue);
+
+      this.auth.postRequest('Appointment/insert', addFormValue).subscribe({
         next: (res: any) => {
           this.toastr.success(res.message);
-          // Redirect to the login page after a successful signup
-        //  this.route.navigateByUrl('/login');
-        this.route.navigate(['/list-appointment']);
+          this.route.navigate(['/list-appointment']);
         },
-        error: (res: any) => {
-          this.toastr.error(res.message);
+        error: (error: any) => {
+          this.toastr.error(error.message);
         }
       });
     } else {
-      ValiadateForm.validateAllFormFileds(this.addAppointment);
-      this.toastr.error('You form is invalid');
+      // Validate the form fields
+      ValiadateForm.validateAllFormFileds(this.addAppointment); // Corrected function name
+
+      this.toastr.error('Your form is invalid');
     }
-   
   }
+  getDoctorList() {
+    // let doctorlist = this.auth.postRequest('masterlist',{Type: 'DOCTOR'});
+    // forkJoin([doctorlist]).subscribe((res:any)=>{
+
+    //   if(res[0].status){
+    //     this.dropdown.doctorlist = res[0].data;
+    //     console.log()
+    //   }
+
+    // })
+    const doctorList$ = this.auth.postRequest('masterlist', { Type: 'DOCTOR' });
+
+    doctorList$.subscribe((res: any) => {
+      if (res.status) {
+        this.dropdown.doctor_list = res.data;
+      }
+    });
+  }
+
 }

@@ -1,69 +1,98 @@
-
-<!-- Your Angular component's HTML file -->
 <div class="login-container">
-    <div class="outer">
+  <div class="outer">
       <div class="panel">
-        <div class="panel-heading">
-          <h3 class="pt-3 font-weight-bold text-dark">Add Appointment</h3>
-        </div>
-    
-        <div class="panel-body p-3">
-          <form [formGroup]="addAppointment" class="horizontal-form" (ngSubmit)="addAppointmentData()">
-    
-            <!-- First Name -->
-            <div class="form-group">
-              <div class="input-group">
-                <span class="input-group-text">
-                  <i class="fa fa-user"></i>
-                </span>
-                <input
-                  type="text"
-                  class="form-control"
-                  formControlName="appointmentTitle"
-                  placeholder="Appointment Title"
-                />
-              </div>
-              <small
-                class="text-danger"
-                *ngIf="
-                addAppointment.controls['FirstName'].dirty &&
-                addAppointment.controls['FirstName'].invalid
-                "
-              >*First Name is required</small>
-            </div>
-    
-            <!-- Last Name -->
-            <div class="form-group">
-              <div class="input-group">
-                <span class="input-group-text">
-                  <i class="fa fa-user"></i>
-                </span>
-                <input
-                  type="text"
-                  class="form-control"
-                  formControlName="LastName"
-                  placeholder="Last Name"
-                />
-              </div>
-             
-            </div>
-    
-    
-          
-    
-           
-            <!-- Submit Button -->
-            <button type="submit" class="btn btn-primary btn-block mt-4 w-100">
-              Add
-            </button>
-    
-            <!-- Already have an account link -->
-            <div class="text-center pt-4 text-muted">
-              <a id="forget" routerLink="/list-admin">Back To List</a>
-            </div>
-    
-          </form>
-        </div>
+          <div class="panel-heading">
+              <h3 class="pt-3 font-weight-bold text-dark">Add Appointment</h3>
+          </div>
+
+          <div class="panel-body p-3">
+              <form [formGroup]="addAppointment" class="horizontal-form" (ngSubmit)="addAppointmentData()">
+
+                  <!-- First Name -->
+                  <div class="form-group">
+                      <div class="input-group">
+                          <span class="input-group-text">
+                              <i class="fa fa-user"></i>
+                          </span>
+                          <input type="text" class="form-control" formControlName="appointmentTitle"
+                              placeholder="Appointment Title" />
+                      </div>
+                      <!-- <small class="text-danger" *ngIf="addAppointment.controls['FirstName'].dirty && addAppointment.controls['FirstName'].invalid">
+                          *First Name is required
+                      </small> -->
+                  </div>
+
+                  <!-- Last Name -->
+                  <div class="form-group">
+                      <div class="input-group">
+                          <span class="input-group-text">
+                              <i class="fa fa-user"></i>
+                          </span>
+                          <input type="text" class="form-control" formControlName="appointmentDescription"
+                              placeholder="Appointment Description" />
+                      </div>
+
+                  </div>
+                  <div class="form-group">
+                      <div class="input-group">
+                          <span class="input-group-text">
+                              <i class="fa fa-user"></i>
+                          </span>
+                          <input type="text" class="form-control" formControlName="appointmentType"
+                              placeholder="Appointment Type" />
+                      </div>
+
+                  </div>
+                  <div class="form-group">
+                    <div class="input-group date" id="datepicker">
+                      <span class="input-group-text">
+                        <i class="fa fa-calendar"></i>
+                      </span>
+                      <!-- Add event binding for date change -->
+                      <input type="date" class="form-control" placeholder="Appointment Date" (change)="onDateChange($event)" />
+                    </div>
+                  </div>
+                  
+                  <div class="form-group">
+                    <div class="input-group time" id="timepicker">
+                      <span class="input-group-text">
+                        <i class="fa fa-clock"></i>
+                      </span>
+                      <!-- Add event binding for time change -->
+                      <input type="time" class="form-control" placeholder="Appointment Time" (change)="onTimeChange($event)" />
+                    </div>
+                  </div>
+                  
+                
+                
+
+                  <div class="form-group dropdown-form-group">
+                      <div class="input-group">
+                          <span class="input-group-text">
+                              <i class="fa fa-user"></i>
+                          </span>
+                          <select class="form-control" formControlName="doctorID">
+                              <option value="" disabled selected>Select Doctor</option>
+                              <option *ngFor="let doctor  of dropdown.doctor_list" [value]="doctor .id">{{ doctor .value}}</option>
+                          </select>
+                      </div>
+                  </div>
+
+
+
+
+                  <!-- Submit Button -->
+                  <button type="submit" class="btn btn-primary btn-block mt-4 w-100">
+                      Add
+                  </button>
+
+                  <!-- Already have an account link -->
+                  <div class="text-center pt-4 text-muted">
+                      <a id="forget" routerLink="/list-admin">Back To List</a>
+                  </div>
+
+              </form>
+          </div>
       </div>
-    </div>
-    </div>
+  </div>
+</div>

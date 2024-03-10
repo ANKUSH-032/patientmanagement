@@ -19,6 +19,8 @@ import { AppointmentListComponent } from './auth/appointment/appointment-list/ap
 import { AppointmentAddComponent } from './auth/appointment/appointment-add/appointment-add.component';
 import { AppointmentEditComponent } from './auth/appointment/appointment-edit/appointment-edit.component';
 import { AppointmentGetComponent } from './auth/appointment/appointment-get/appointment-get.component';
+import { AppointmentadminListComponent } from './auth/admin/appointmentadmin-list/appointmentadmin-list.component';
+import { ListAppointmentdataComponent } from './auth/appointment/list-appointmentdata/list-appointmentdata.component';
 
 
 const routes: Routes = [
@@ -47,6 +49,10 @@ const routes: Routes = [
     { path: 'get-appointment/:id', component: AppointmentGetComponent, canActivate: [AuthguardService] },
     { path: 'edit-appointment/:id', component: AppointmentEditComponent, canActivate: [AuthguardService] },
     { path: 'add-appointment', component: AppointmentAddComponent, canActivate: [AuthguardService] },
+
+    { path: 'appointment', component: AppointmentadminListComponent,canActivate: [AuthguardService] },
+
+    { path: 'appointment/patinet', component: ListAppointmentdataComponent,canActivate: [AuthguardService] },
 ];
 
 @NgModule({

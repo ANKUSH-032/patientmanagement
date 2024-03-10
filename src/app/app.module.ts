@@ -33,6 +33,8 @@ import { AppointmentListComponent } from './auth/appointment/appointment-list/ap
 import { AppointmentAddComponent } from './auth/appointment/appointment-add/appointment-add.component';
 import { AppointmentEditComponent } from './auth/appointment/appointment-edit/appointment-edit.component';
 import { AppointmentGetComponent } from './auth/appointment/appointment-get/appointment-get.component';
+import { AppointmentadminListComponent } from './auth/admin/appointmentadmin-list/appointmentadmin-list.component';
+import { ListAppointmentdataComponent } from './auth/appointment/list-appointmentdata/list-appointmentdata.component';
 
 //import { DataTablesModule } from 'angular-datatables';
 @NgModule({
@@ -58,7 +60,10 @@ import { AppointmentGetComponent } from './auth/appointment/appointment-get/appo
     AppointmentListComponent,
     AppointmentAddComponent,
     AppointmentEditComponent,
-    AppointmentGetComponent
+    AppointmentGetComponent,
+    AppointmentadminListComponent,
+    ListAppointmentdataComponent,
+    
   ],
   imports: [
     BrowserModule,
@@ -76,6 +81,7 @@ import { AppointmentGetComponent } from './auth/appointment/appointment-get/appo
         preventDuplicates: true,
            positionClass: 'toast-top-right',
       })
+     
   ],
   providers: [AuthguardService],
   bootstrap: [AppComponent]

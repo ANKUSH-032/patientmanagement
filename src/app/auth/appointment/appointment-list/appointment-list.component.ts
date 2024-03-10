@@ -22,7 +22,10 @@ export class AppointmentListComponent implements OnInit {
     AppointmentDate: '',
     AppointmentTime: '',
     DoctorId: '',
-    PatientId: ''
+    PatientId: '',
+    Status:'',
+    DoctorName:'',
+    PatinetName : ''
 } 
   constructor(
     private authService: AuthService,
@@ -83,7 +86,7 @@ export class AppointmentListComponent implements OnInit {
 
 deletedoctor(userid : any){
  
-  this.authService.delete('Appointment/delete', `?DoctorId=${userid}`).subscribe((data) => {
+  this.authService.delete('Appointment/delete', `?AppointmentId=${userid}`).subscribe((data) => {
     this.appointmet_list = data;
     this.toastr.success('Doctor Delete Successfully');
     

@@ -77,8 +77,10 @@ export class LoginComponent implements OnInit {
               this.route.navigateByUrl('/list-admin');
             }else if(res.userdetails.role === 'doctor'){
               this.route.navigateByUrl('/list-doctor');
+              this.storageService.set('doctoruserId', res.userdetails.userId);
             }else{
               this.route.navigateByUrl('/list-patients');
+              this.storageService.set('patientuserId', res.userdetails.userId);
             }
            
           } 

@@ -10,20 +10,18 @@ const baseURL = environment.api_url
 export class AuthService {
 
   constructor(private http: HttpClient) { }
-  
+
   login(loginObj: any) {
 
     return this.http.post(baseURL + "Auth/login", loginObj, {})
   }
 
-  postReq(url: any,data: any): Observable<any> {
- 
-
+  postReq(url: any, data: any): Observable<any> {
     return this.http.post(baseURL + url, data).pipe(map((response: any) => {
-     // setTimeout(() => this.spinner.hide(), 500)
       return response;
     }));
   }
+
   postRequest(url: any, data: any): Observable<any> {
     const token = localStorage.getItem('token');
     let headers = new HttpHeaders({
@@ -37,16 +35,20 @@ export class AuthService {
     }));
   }
 
-  get(url: any,id: string) {
-    return this.http.get(baseURL+ url + id)
+  get(url: any, id: string) {
+    return this.http.get(baseURL + url + id)
   }
 
-  delete(url: any,id: string) {
-    return this.http.delete(baseURL+ url + id)
+  delete(url: any, id: string) {
+    return this.http.delete(baseURL + url + id)
+  }
+
+  patch(url: any, data: any) {
+    return this.http.patch(baseURL + url,data)
   }
 
   editdata(url: any, data: any) {
-    return this.http.post(baseURL+ url , data)
+    return this.http.post(baseURL + url, data)
   }
 
 
