@@ -4,6 +4,7 @@ import { Subject } from 'rxjs';
 import { DoctorList } from 'src/app/helper/model/doctor';
 import { AuthService } from 'src/app/services/auth.service';
 import { CommonService } from 'src/app/services/common.service';
+import { StorageServiceService } from 'src/app/services/storage-service.service';
 
 @Component({
   selector: 'app-doctor-list',
@@ -28,7 +29,8 @@ export class DoctorListComponent implements OnInit {
   }
   constructor(private authService: AuthService,
     private commonService: CommonService,
-    private toastr: ToastrService,) { }
+    private toastr: ToastrService,
+    private storageService: StorageServiceService) { }
     ngOnInit(): void {
       this.dtOptions = {
         pagingType: 'simple_numbers',
@@ -89,6 +91,11 @@ deletedoctor(userid : any){
     this.toastr.success('Doctor Delete Successfully');
     
   });
+}
+
+onViewData(): boolean {
+  const viewData = this.storageService.get('role') 
+  return viewData.toLowerCase() === 'admin'
 }
   ngOnDestroy(): void {
     this.dtTrigger.unsubscribe();

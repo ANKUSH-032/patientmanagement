@@ -3,8 +3,8 @@
      <!-- <a routerLink="/home">Home</a> -->
       <!-- <a routerLink="/user-list">Users</a> -->
       <a *ngIf="onViewData()" routerLink="/list-admin">Admin List</a>
-      <a *ngIf="onViewData() || onDoctorData()" routerLink="/list-doctor">Doctor List</a>
-      <a *ngIf="onViewData() || onappointmentData()" routerLink="/list-patients">Patient List</a>
+      <a *ngIf="onViewData()" routerLink="/list-doctor">Doctor List</a>
+      <a *ngIf="onViewData() || onDoctorData()" routerLink="/list-patients">Patient List</a>
       <a *ngIf="onappointmentData()" routerLink="/list-appointment">Appointment List</a>
       <a *ngIf="onViewData()" routerLink="/appointment">Appointment Admin List</a>
       <a *ngIf="onDoctorData()" routerLink="/appointment/patinet">Appointment Patient List</a>
@@ -16,7 +16,7 @@
         <input type="checkbox"  id="dark-mode-toggle">
         <span class="slider round"></span>
       </label> -->
-      <a routerLink="/contact" click="onLogOut()">LogOut</a>
+      <a routerLink="/login" click="onLogOut()">LogOut</a>
   
     </nav>
   
